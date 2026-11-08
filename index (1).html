@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shubh Deepawali</title>
+<meta name="description" content="Diye jalao, rocket chhodo aur Diwali ki wish pao.">
+<meta name="theme-color" content="#16081f">
+<meta property="og:title" content="Shubh Deepawali">
+<meta property="og:description" content="Diye jalao, rocket chhodo aur Diwali ki wish pao.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C21 10 24 16 16 26C8 16 11 10 16 2Z' fill='%23ffb627'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Yatra+One&display=swap">
+<style>
+:root {
+  /* Layout: one centered column on a night stage. Toran and lanterns hang from the top, a rangoli rises from the bottom. Screen 1 asks the name, screen 2 holds five diyas and then a rocket, the finale is a full-screen fireworks sky. Single dark look by choice. */
+  --night: #16081f;
+  --plum: #2a0f3a;
+  --maroon: #5a1230;
+  --marigold: #ffb627;
+  --saffron: #ff7a1a;
+  --rani: #e0307a;
+  --leaf: #2fae72;
+  --wood: #5e2610;
+  --wood2: #8a4318;
+  --brass: #d9a441;
+  --cream: #fff3d6;
+  --muted: #e6c9a8;
+  --f-display: 'Yatra One', 'Noto Serif Devanagari', Georgia, serif;
+  --f-body: 'Mukta', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --lit: 0;
+  color-scheme: dark;
+}
+/*SAFE*/
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+/*ENDSAFE*/
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  position: relative;
+  margin: 0;
+  font: 400 1rem/1.55 var(--f-body);
+  color: var(--cream);
+  background:
+    radial-gradient(120% 60% at 50% 108%, var(--maroon) 0%, transparent 62%),
+    radial-gradient(90% 55% at 50% -8%, #3c1558 0%, transparent 70%),
+    var(--night);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+[tabindex="-1"]:focus { outline: none; }
+:focus-visible { outline: 3px solid var(--marigold); outline-offset: 4px; border-radius: 10px; }
+
+/* ---------- decor ---------- */
+.warm {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: calc(var(--lit) * 0.9);
+  transition: opacity 1s ease;
+  background: radial-gradient(80% 55% at 50% 68%, rgba(255,150,40,.38), transparent 70%);
+}
+.embers { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.embers i {
+  position: absolute; bottom: -12px; left: var(--x);
+  width: var(--s); height: var(--s); border-radius: 50%;
+  background: #ffc14d; box-shadow: 0 0 10px 2px rgba(255,150,40,.7);
+  opacity: 0; animation: ember var(--t) linear var(--dl) infinite;
+}
+.rangoli {
+  position: fixed; left: 50%; bottom: 0; z-index: 0; pointer-events: none;
+  width: min(118vmin, 860px); aspect-ratio: 1; max-width: 100%;
+  transform: translate(-50%, 62%); opacity: .62;
+}
+.rangoli svg { width: 100%; height: 100%; display: block; }
+.rangoli .fwd, .rangoli .rev { transform-box: fill-box; transform-origin: center; }
+.rangoli .fwd { animation: spin 70s linear infinite; }
+.rangoli .rev { animation: spin 90s linear infinite reverse; }
+
+.toran { position: absolute; top: 0; left: 0; right: 0; z-index: 1; pointer-events: none; }
+.tbar {
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--marigold) 0 10px, var(--rani) 10px 14px, var(--saffron) 14px 24px, var(--rani) 24px 28px);
+  box-shadow: 0 2px 10px rgba(255,150,40,.45);
+}
+.trow { display: flex; }
+.tu { flex: 1; display: flex; flex-direction: column; align-items: center; transform-origin: top center; animation: sway 4.2s ease-in-out infinite; }
+.tu u { display: block; width: 1.5px; height: var(--h); background: rgba(255,182,39,.75); text-decoration: none; }
+.tu b { display: block; width: 12px; height: 12px; margin-top: -1px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe08a, var(--c) 60%, #b34700); }
+.tu s { display: block; width: 9px; height: 16px; margin-top: 1px; text-decoration: none; background: linear-gradient(#3fbf7f, #1f7a4d); border-radius: 0 100% 0 100%; transform: rotate(-12deg); }
+
+.lantern {
+  position: absolute; top: 6px; z-index: 1; pointer-events: none;
+  width: clamp(34px, 8.5vw, 66px);
+  transform-origin: 50% 0; animation: sway 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 16px rgba(255,150,40,.65));
+}
+.lantern svg { width: 100%; height: auto; display: block; }
+.lantern.l { left: max(clamp(12px, 6vw, 120px), env(safe-area-inset-left, 0px)); }
+.lantern.r { right: max(clamp(12px, 6vw, 120px), env(safe-area-inset-right, 0px)); animation-delay: -2.2s; }
+
+/* ---------- screens ---------- */
+.app {
+  position: relative; z-index: 2; min-height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding-block: clamp(96px, 15vh, 130px) clamp(70px, 12vh, 150px);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.screen { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+.eyebrow { margin: 0; font: 400 1.2rem/1.2 var(--f-display); color: var(--marigold); }
+h1, h2, h3 { margin: 0; font-weight: 400; font-family: var(--f-display); text-wrap: balance; overflow-wrap: anywhere; text-shadow: 0 0 26px rgba(255,150,40,.35); }
+h1 { font-size: clamp(2rem, 8.4vw, 3.4rem); line-height: 1.1; }
+h3 { font-size: 1.6rem; line-height: 1.15; }
+.lead { margin: 0; color: var(--muted); max-width: 40ch; }
+
+.panel {
+  width: min(100%, 520px);
+  padding: clamp(20px, 5vw, 32px);
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  background: linear-gradient(160deg, rgba(60,18,70,.74), rgba(36,8,44,.74));
+  border: 1px solid rgba(255,182,39,.45);
+  border-radius: 24px;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 0 0 5px rgba(22,8,31,.6), inset 0 0 0 6px rgba(255,182,39,.2);
+}
+form.panel { text-align: left; align-items: stretch; }
+form.panel .head { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; margin-bottom: 4px; }
+label { font-weight: 600; font-size: .95rem; color: var(--muted); }
+input[type="text"] {
+  width: 100%; min-height: 54px; padding: 12px 16px;
+  font: 600 1.2rem var(--f-body); color: var(--cream);
+  background: rgba(255,243,214,.08);
+  border: 2px solid rgba(255,182,39,.5); border-radius: 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+input[type="text"]::placeholder { color: #c9a98a; font-weight: 400; }
+input[type="text"]:focus { outline: none; border-color: var(--marigold); box-shadow: 0 0 0 4px rgba(255,182,39,.22); }
+input[readonly] { font-size: .95rem; font-weight: 400; }
+.err { min-height: 1.4em; margin: 0; color: #ff9fbf; font-weight: 600; font-size: .95rem; }
+.ok { min-height: 1.4em; margin: 0; color: var(--marigold); font-weight: 600; font-size: .95rem; }
+
+.btn {
+  min-height: 50px; padding: 12px 24px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none;
+  font: 700 1.1rem var(--f-body); color: #2a0f0a;
+  background: linear-gradient(180deg, #ffd36b, var(--marigold) 55%, #ff8a1f);
+  border: 0; border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(255,138,31,.35), inset 0 1px 0 rgba(255,255,255,.5);
+  transition: transform .15s;
+}
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn-ghost {
+  min-height: 44px; padding: 9px 18px; cursor: pointer;
+  font: 600 .95rem var(--f-body); color: var(--marigold);
+  background: transparent; border: 1.5px solid rgba(255,182,39,.55); border-radius: 999px;
+}
+
+/* ---------- door ---------- */
+.door {
+  position: relative; width: min(74vw, 290px, 40vh); aspect-ratio: 3 / 4; flex: none;
+  padding: 0; border: 0; background: none; cursor: pointer; perspective: 900px;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.door:disabled { cursor: default; }
+.frame {
+  position: absolute; inset: 0; display: block; overflow: hidden;
+  border: 9px solid var(--brass); border-radius: 999px 999px 10px 10px / 46% 46% 10px 10px;
+  background: var(--night);
+  box-shadow: 0 18px 50px rgba(0,0,0,.5), 0 0 44px rgba(255,150,40,.28), inset 0 0 0 2px rgba(0,0,0,.35);
+}
+.inside {
+  position: absolute; inset: 0; display: block;
+  background: radial-gradient(70% 55% at 50% 80%, #fff3d6 0%, #ffcf5a 22%, #ff8a1f 55%, #7a1f3a 100%);
+}
+.leaf {
+  position: absolute; top: 0; bottom: 0; width: 50.5%; display: block;
+  background: linear-gradient(90deg, var(--wood2), var(--wood));
+  transition: transform 1.3s cubic-bezier(.6,0,.2,1);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.leaf::before {
+  content: ""; position: absolute; inset: 12% 12% 12% 12%;
+  border: 2px solid rgba(255,211,107,.5); border-radius: 6px;
+  box-shadow: inset 0 0 0 6px rgba(0,0,0,.16), inset 0 0 0 8px rgba(255,211,107,.18);
+}
+.leaf::after {
+  content: ""; position: absolute; top: 52%; width: 15px; height: 15px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff3d6, var(--brass) 55%, #7a4a10);
+  box-shadow: 0 0 0 3px rgba(0,0,0,.28);
+}
+.lf { left: 0; transform-origin: 0 50%; border-right: 1px solid rgba(0,0,0,.55); }
+.rt { right: 0; transform-origin: 100% 50%; }
+.lf::after { right: 9px; }
+.rt::after { left: 9px; }
+.door.open .lf { transform: rotateY(72deg); }
+.door.open .rt { transform: rotateY(-72deg); }
+.dring {
+  position: absolute; left: 50%; top: 52%; width: 46px; height: 46px; margin: -22px 0 0 -23px;
+  border-radius: 50%; border: 2px solid var(--marigold); pointer-events: none; z-index: 2;
+  animation: ringPulse 1.5s ease-out infinite;
+}
+.door.open .dring { display: none; }
+.door.knock { animation: knock .35s ease-in-out; }
+@keyframes knock {
+  0%,100% { transform: none; }
+  30% { transform: translateX(-5px) rotate(-.7deg); }
+  60% { transform: translateX(5px) rotate(.7deg); }
+}
+
+/* ---------- diyas ---------- */
+.hint { margin: 0; color: var(--cream); font-weight: 600; font-size: 1.1rem; max-width: 30ch; text-wrap: balance; }
+.diyas { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(4px, 2vw, 18px); width: min(100%, 600px); align-items: start; }
+.diya {
+  appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0; margin: 0;
+  color: inherit; font: inherit; cursor: pointer; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  opacity: 0; transform: translateY(34px) scale(.6);
+  -webkit-tap-highlight-color: transparent;
+}
+.diya:nth-child(1), .diya:nth-child(5) { margin-top: 18px; }
+.diya:nth-child(2), .diya:nth-child(4) { margin-top: 7px; }
+.diya:disabled { cursor: default; }
+.diya svg { width: 100%; height: auto; overflow: visible; display: block; transition: filter .6s; }
+.tap {
+  font: 700 .78rem/1.2 var(--f-body); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--marigold); animation: tapPulse 1.6s ease-in-out infinite;
+}
+.go .diya { animation: diyaIn .7s cubic-bezier(.2,1.1,.3,1.25) both; animation-delay: calc(.35s + var(--i) * .13s); }
+.go .hint { animation: fadeUp .7s ease both .1s; }
+.go .count { animation: fadeUp .7s ease both .8s; }
+.count {
+  margin: 0; padding: 6px 16px; font-weight: 600;
+  border: 1px solid rgba(255,182,39,.4); border-radius: 999px; background: rgba(22,8,31,.55);
+}
+.ring { transform-origin: 60px 88px; animation: ringPulse 1.9s ease-out infinite; }
+.glow { opacity: 0; transition: opacity .6s; }
+.flame { transform-origin: 60px 60px; transform: scale(0); opacity: 0; }
+.oil { transition: fill .6s; }
+.lit svg { filter: drop-shadow(0 0 14px rgba(255,160,40,.6)); }
+.lit .glow { opacity: 1; animation: glowPulse 2.4s ease-in-out infinite; }
+.lit .flame { animation: ignite .5s ease-out forwards, flicker 1.4s ease-in-out .5s infinite; }
+.lit .oil { fill: #ff9a2a; }
+.lit .ring { display: none; }
+.lit .tap { animation: none; color: var(--muted); letter-spacing: .02em; text-transform: none; font-weight: 600; font-size: .8rem; }
+
+/* ---------- rocket stage ---------- */
+.rk { position: relative; left: 36px; width: 220px; height: 300px; flex: none; }
+.rk-in { animation: pop .85s cubic-bezier(.2,1.1,.3,1) both; }
+.rocket { position: absolute; left: 46px; top: 10px; width: 56px; height: 190px; will-change: transform; }
+.rocket > svg { display: block; width: 56px; height: 190px; overflow: visible; }
+.rocket .exhaust { position: absolute; left: 8px; top: 112px; width: 40px; height: 80px; opacity: 0; transform-origin: 50% 0; }
+.rocket.flying .exhaust { opacity: 1; animation: exhFlick .12s ease-in-out infinite alternate; }
+.rocket .tip {
+  position: absolute; left: 31px; top: 127px; width: 14px; height: 14px; border-radius: 50%;
+  background: radial-gradient(circle, #fff6dc, #ffb627 40%, transparent 70%); opacity: 0;
+}
+.rocket.burning .tip { opacity: 1; animation: sparkFlick .12s steps(2) infinite; }
+.rocket .exh-pt { position: absolute; left: 27px; top: 124px; width: 2px; height: 2px; }
+.rocket.shake { animation: shake .12s linear 5; }
+.fuse-ring {
+  position: absolute; left: 70px; top: 130px; width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid var(--marigold); pointer-events: none; animation: ringPulse 1.5s ease-out infinite;
+}
+.rk.started .fuse-ring { display: none; }
+.rk-hit {
+  position: absolute; left: 28px; top: 0; width: 100px; height: 232px; z-index: 3;
+  background: none; border: 0; padding: 0; cursor: pointer; border-radius: 16px; -webkit-tap-highlight-color: transparent;
+}
+.rk-hit:disabled { cursor: default; }
+.rk-tap {
+  position: absolute; left: 24px; width: 100px; top: 232px; text-align: center; pointer-events: none;
+  font: 700 .95rem/1.2 var(--f-body); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--marigold); animation: tapPulse 1.6s ease-in-out infinite;
+}
+.hand {
+  position: absolute; left: 49px; top: 124px; width: 130px; height: 170px; z-index: 4; pointer-events: none;
+  opacity: 0; transform: translate(60px, 150px) rotate(14deg);
+  transition: transform .55s cubic-bezier(.2,1.2,.3,1), opacity .25s;
+}
+.hand.on { opacity: 1; transform: none; }
+.hand svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.lflame { transform-origin: 35px 42px; transform: scale(0); }
+.hand.lit .lflame { animation: ignite .3s ease-out forwards, flicker 1s ease-in-out .3s infinite; }
+
+/* ---------- finale ---------- */
+.fbg {
+  position: fixed; inset: 0; z-index: 40; pointer-events: none; opacity: 0; transition: opacity .9s ease;
+  background: radial-gradient(90% 70% at 50% 60%, rgba(60,14,60,.97), rgba(14,4,22,.99));
+}
+.fbg.on { opacity: 1; }
+#fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 45; display: block; pointer-events: none; touch-action: manipulation; }
+#fx.tappable { pointer-events: auto; cursor: pointer; }
+.fin {
+  position: fixed; inset: 0; z-index: 50; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  padding-top: calc(24px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.fin .dev { margin: 0; font: 400 clamp(1.3rem, 5vw, 2rem)/1.2 var(--f-display); color: var(--marigold); opacity: 0; }
+.fin-big {
+  margin: 0; display: flex; flex-direction: column; align-items: center;
+  font: 400 clamp(3.4rem, 19vw, 10rem)/.98 var(--f-display);
+  filter: drop-shadow(0 0 22px rgba(255,140,30,.6)); animation: finGlow 2.8s ease-in-out infinite;
+}
+.ln { display: block; white-space: nowrap; }
+.ch {
+  display: inline-block;
+  background: linear-gradient(180deg, #fff3d6 5%, #ffd36b 40%, #ff9a2a 85%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: letterIn .9s cubic-bezier(.2,1,.3,1.3) both; animation-delay: var(--d);
+}
+.fin-from { margin: 0; font: 600 clamp(1rem, 4vw, 1.3rem) var(--f-body); color: var(--cream); opacity: 0; overflow-wrap: anywhere; }
+.fin-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin-top: 8px; opacity: 0; }
+.fin-actions .btn, .fin-actions .btn-ghost { pointer-events: auto; }
+.fin-hint { margin: 0; font-size: .9rem; color: var(--muted); opacity: 0; }
+.fin.on .dev { animation: fadeUp .8s ease both .1s; }
+.fin.on .fin-from { animation: fadeUp .9s ease both 2.0s; }
+.fin.on .fin-actions { animation: fadeUp .9s ease both 2.3s; }
+.fin.on .fin-hint { animation: fadeUp .9s ease both 2.7s; }
+
+/* ---------- share sheet ---------- */
+.sheet-back {
+  position: fixed; inset: 0; z-index: 60; overflow-y: auto; display: flex;
+  background: rgba(10,3,16,.74);
+  padding-block: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sheet { margin: auto; text-align: left; align-items: stretch; }
+.sheet h3, .sheet .lead { text-align: center; align-self: center; }
+.sheet .row { display: flex; flex-wrap: wrap; gap: 10px; }
+.sheet .row > * { flex: 1 1 150px; min-width: 0; }
+.sheet .btn-ghost { align-self: center; }
+#res { display: flex; flex-direction: column; gap: 10px; }
+
+/* ---------- motion ---------- */
+@keyframes sway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes ember {
+  0% { transform: translate(0,0); opacity: 0; }
+  10% { opacity: .9; }
+  90% { opacity: .5; }
+  100% { transform: translate(var(--dx), -105vh); opacity: 0; }
+}
+@keyframes pop {
+  0% { opacity: 0; transform: translateY(40px) scale(.55) rotate(-3deg); }
+  60% { opacity: 1; transform: translateY(-6px) scale(1.05) rotate(.5deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes diyaIn { from { opacity: 0; transform: translateY(34px) scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes tapPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes ringPulse { 0% { transform: scale(.6); opacity: .7; } 100% { transform: scale(1.25); opacity: 0; } }
+@keyframes ignite { to { transform: scale(1); opacity: 1; } }
+@keyframes flicker {
+  0%,100% { transform: scale(1) skewX(0deg); }
+  25% { transform: scale(1.04,.96) skewX(2deg); }
+  50% { transform: scale(.97,1.05) skewX(-2deg); }
+  75% { transform: scale(1.03,.98) skewX(1deg); }
+}
+@keyframes glowPulse { 0%,100% { opacity: .85; } 50% { opacity: 1; } }
+@keyframes letterIn {
+  from { opacity: 0; transform: translateY(46px) scale(.4) rotate(-8deg); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes finGlow {
+  0%,100% { filter: drop-shadow(0 0 18px rgba(255,140,30,.5)); }
+  50% { filter: drop-shadow(0 0 34px rgba(255,160,50,.85)); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-2px) rotate(-1.2deg); }
+  75% { transform: translateX(2px) rotate(1.2deg); }
+}
+@keyframes exhFlick { from { transform: scaleY(.85) scaleX(.95); } to { transform: scaleY(1.15) scaleX(1.05); } }
+@keyframes sparkFlick { 0% { transform: scale(.8); } 100% { transform: scale(1.5); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .tu, .lantern, .embers i, .rangoli .fwd, .rangoli .rev, .ring, .tap, .glow, .fin-big, .fuse-ring, .rk-tap, .dring, .door.knock { animation: none !important; }
+  .embers { display: none; }
+  .go .diya, .go .hint, .go .count, .rk-in { animation: none; opacity: 1; transform: none; }
+  .lit .flame { animation: none; transform: none; opacity: 1; }
+  .hand.lit .lflame { animation: none; transform: none; }
+  .ch { animation: none; }
+  .fin.on .dev, .fin.on .fin-from, .fin.on .fin-actions, .fin.on .fin-hint { animation: none; opacity: 1; }
+}
+</style>
+</head>
+<body>
+<noscript><p style="padding:24px;text-align:center">Ye page chalane ke liye JavaScript on kijiye.</p></noscript>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="gGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffbe3c" stop-opacity=".75"/>
+      <stop offset=".55" stop-color="#ff8c1e" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#ff7814" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gFlame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a1a"/>
+      <stop offset=".55" stop-color="#ffb627"/>
+      <stop offset="1" stop-color="#ffe08a"/>
+    </linearGradient>
+    <linearGradient id="gClay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4501f"/>
+      <stop offset="1" stop-color="#7d2a0e"/>
+    </linearGradient>
+    <radialGradient id="gLantern" cx="50%" cy="55%" r="60%">
+      <stop offset="0" stop-color="#fff3d6"/>
+      <stop offset=".45" stop-color="#ffb627"/>
+      <stop offset="1" stop-color="#e0307a"/>
+    </radialGradient>
+    <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d85a0a"/>
+      <stop offset=".35" stop-color="#ffb040"/>
+      <stop offset="1" stop-color="#c94a08"/>
+    </linearGradient>
+    <linearGradient id="gCone" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b0123f"/>
+      <stop offset=".4" stop-color="#e0307a"/>
+      <stop offset="1" stop-color="#8d0f35"/>
+    </linearGradient>
+    <linearGradient id="gExh" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3d6"/>
+      <stop offset=".3" stop-color="#ffb627"/>
+      <stop offset=".7" stop-color="#ff7a1a" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#ff5a10" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="warm" aria-hidden="true"></div>
+<div class="embers" id="embers" aria-hidden="true"></div>
+<div class="rangoli" id="rangoli" aria-hidden="true"></div>
+<div class="toran" id="toran" aria-hidden="true"></div>
+<div class="lantern l" aria-hidden="true">
+  <svg viewBox="0 0 60 130"><line x1="30" y1="0" x2="30" y2="30" stroke="#ffb627" stroke-width="2"/><path d="M18 30h24l-4 8H22z" fill="#c9861a"/><path d="M22 38C8 52 8 82 22 96H38C52 82 52 52 38 38Z" fill="url(#gLantern)"/><path d="M30 38V96M22 38C16 56 16 78 22 96M38 38C44 56 44 78 38 96" stroke="rgba(255,243,214,.55)" fill="none" stroke-width="1.2"/><path d="M22 96h16l-3 6H25z" fill="#c9861a"/><path d="M30 102v14" stroke="#ffb627" stroke-width="2"/><circle cx="30" cy="120" r="4" fill="#e0307a"/></svg>
+</div>
+<div class="lantern r" aria-hidden="true">
+  <svg viewBox="0 0 60 130"><line x1="30" y1="0" x2="30" y2="30" stroke="#ffb627" stroke-width="2"/><path d="M18 30h24l-4 8H22z" fill="#c9861a"/><path d="M22 38C8 52 8 82 22 96H38C52 82 52 52 38 38Z" fill="url(#gLantern)"/><path d="M30 38V96M22 38C16 56 16 78 22 96M38 38C44 56 44 78 38 96" stroke="rgba(255,243,214,.55)" fill="none" stroke-width="1.2"/><path d="M22 96h16l-3 6H25z" fill="#c9861a"/><path d="M30 102v14" stroke="#ffb627" stroke-width="2"/><circle cx="30" cy="120" r="4" fill="#e0307a"/></svg>
+</div>
+
+<main class="app" id="app">
+  <section class="screen" id="s-door">
+    <p class="eyebrow">शुभ दीपावली</p>
+    <h1>Diwali ka darwaza kholiye</h1>
+    <button class="door" id="door" type="button" aria-label="Darwaza kholne ke liye do baar tap karein">
+      <span class="frame">
+        <span class="inside"></span>
+        <span class="leaf lf"></span>
+        <span class="leaf rt"></span>
+      </span>
+      <span class="dring" aria-hidden="true"></span>
+    </button>
+    <p class="hint" id="doorHint" aria-live="polite">Darwaze par do baar tap karein.</p>
+  </section>
+
+  <section class="screen" id="s-play" hidden>
+    <p class="hint" id="hint" tabindex="-1">Panch diye jalaiye. Har diye par tap karein.</p>
+    <div class="diyas" id="diyas"></div>
+    <p class="count" id="count" aria-live="polite">0 / 5 diye jale</p>
+
+    <div class="rk" id="rk" hidden>
+      <div class="rocket" id="rocket" aria-hidden="true">
+        <svg viewBox="0 0 56 190" focusable="false">
+          <rect x="26" y="118" width="4" height="72" rx="2" fill="#c89b5a"/>
+          <rect x="26" y="118" width="1.6" height="72" fill="#e2b977"/>
+          <path d="M34 120q6 8 4 14" stroke="#2a1a10" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <rect x="12" y="34" width="32" height="86" rx="3" fill="url(#gBody)"/>
+          <rect x="12" y="46" width="32" height="7" fill="#fff3d6"/>
+          <rect x="12" y="100" width="32" height="7" fill="#fff3d6"/>
+          <polygon points="28,67 30.12,73.09 36.56,73.22 31.42,77.11 33.29,83.28 28,79.6 22.71,83.28 24.58,77.11 19.44,73.22 25.88,73.09" fill="#fff3d6"/>
+          <path d="M28 0L44 34H12Z" fill="url(#gCone)"/>
+          <path d="M28 4L33 34H28Z" fill="rgba(255,255,255,.25)"/>
+          <rect x="11" y="116" width="34" height="6" rx="2" fill="#7a1f3a"/>
+        </svg>
+        <svg class="exhaust" viewBox="0 0 40 80" focusable="false"><path d="M20 0C34 20 30 50 20 80C10 50 6 20 20 0Z" fill="url(#gExh)"/></svg>
+        <i class="tip" id="tip"></i>
+        <i class="exh-pt" id="exh"></i>
+      </div>
+      <span class="fuse-ring" aria-hidden="true"></span>
+      <div class="hand" id="hand" aria-hidden="true">
+        <svg viewBox="0 0 130 170" focusable="false">
+          <path d="M82 112L106 146" stroke="#d99a6c" stroke-width="26" stroke-linecap="round" fill="none"/>
+          <path d="M100 138L120 168" stroke="#7a1f3a" stroke-width="36" stroke-linecap="round" fill="none"/>
+          <path d="M85 148L115 128" stroke="#ffb627" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <rect x="24" y="56" width="22" height="58" rx="5" fill="#1fa5a0"/>
+          <rect x="24" y="56" width="7" height="58" rx="3" fill="rgba(255,255,255,.18)"/>
+          <rect x="25" y="44" width="20" height="14" rx="3" fill="#c8ccd4"/>
+          <rect x="31" y="40" width="8" height="6" rx="2" fill="#9aa0ab"/>
+          <g class="lflame">
+            <path d="M35 20C42 29 45 35 35 42C25 35 28 29 35 20Z" fill="url(#gFlame)"/>
+            <path d="M35 31C38 35 39 38 35 41C31 38 32 35 35 31Z" fill="#fff6dc"/>
+          </g>
+          <rect x="50" y="72" width="40" height="52" rx="16" fill="#e0a074"/>
+          <g fill="#e8ad80" stroke="#b9764a" stroke-width="1.2">
+            <rect x="22" y="74" width="40" height="13" rx="6.5"/>
+            <rect x="22" y="86" width="40" height="13" rx="6.5"/>
+            <rect x="22" y="98" width="40" height="13" rx="6.5"/>
+            <rect x="24" y="110" width="36" height="12" rx="6"/>
+          </g>
+          <path d="M64 84L47 58" stroke="#b9764a" stroke-width="13" stroke-linecap="round" fill="none"/>
+          <path d="M64 84L47 58" stroke="#e8ad80" stroke-width="11" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <button class="rk-hit" id="rkBtn" type="button" aria-label="Rocket jalayein, tap karein"></button>
+      <span class="rk-tap" id="rkTap">Tap</span>
+    </div>
+
+    <button class="btn-ghost" type="button" id="change">Wapas jayein</button>
+  </section>
+</main>
+
+<div class="fbg" id="fbg" hidden></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<div class="fin" id="fin" hidden>
+  <p class="dev">शुभ दीपावली</p>
+  <h2 class="fin-big" aria-label="Happy Diwali"><span class="ln" id="l1" aria-hidden="true"></span><span class="ln" id="l2" aria-hidden="true"></span></h2>
+  <p class="fin-from" id="finFrom" hidden></p>
+  <div class="fin-actions">
+    <button class="btn" type="button" id="shareOpen">Apne naam se bhejein</button>
+    <button class="btn-ghost" type="button" id="replay">Dobara dekhein</button>
+  </div>
+  <p class="fin-hint">Screen par tap karke aur aatishbaazi chhodiye.</p>
+</div>
+
+<div class="sheet-back" id="sheetBack" hidden>
+  <form class="panel sheet" id="shForm" role="dialog" aria-modal="true" aria-labelledby="shTitle" novalidate>
+    <h3 id="shTitle">Ye wish apne naam se bhejein</h3>
+    <p class="lead">Apna naam likhiye. Jise bhejoge, use wish ke end mein aapka naam dikhega.</p>
+    <label for="sender">Aapka naam</label>
+    <input type="text" id="sender" maxlength="30" autocomplete="off" autocapitalize="words" enterkeyhint="go" placeholder="Apna naam likhiye">
+    <p class="err" id="serr" role="alert"></p>
+    <button class="btn" type="submit" id="mk">Link banao</button>
+    <div id="res" hidden>
+      <label for="link">Aapka link</label>
+      <input type="text" id="link" readonly>
+      <div class="row">
+        <button class="btn" type="button" id="copy">Link copy karein</button>
+        <a class="btn" id="wa" target="_blank" rel="noopener">WhatsApp par bhejein</a>
+      </div>
+      <p class="ok" id="copied" role="status"></p>
+    </div>
+    <button class="btn-ghost" type="button" id="shClose">Band karein</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const $ = (s) => document.querySelector(s);
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const TOTAL = 5;
+
+  function clean(v) { return String(v || '').trim().replace(/\s+/g, ' ').slice(0, 30); }
+  const FROM = (function () {
+    try { return clean(new URLSearchParams(window.location.search).get('from')); } catch (e) { return ''; }
+  })();
+
+  /* ---------- decor ---------- */
+  (function embers() {
+    const el = $('#embers');
+    for (let i = 0; i < 26; i++) {
+      const e = document.createElement('i');
+      e.style.setProperty('--x', (Math.random() * 100).toFixed(1) + '%');
+      e.style.setProperty('--s', (2 + Math.random() * 3.5).toFixed(1) + 'px');
+      e.style.setProperty('--t', (9 + Math.random() * 10).toFixed(1) + 's');
+      e.style.setProperty('--dl', (-Math.random() * 18).toFixed(1) + 's');
+      e.style.setProperty('--dx', ((Math.random() - 0.5) * 80).toFixed(0) + 'px');
+      el.appendChild(e);
+    }
+  })();
+
+  (function rangoli() {
+    const rings = [
+      { n: 20, r: 92, rx: 6, ry: 12, f: '#e0307a' },
+      { n: 16, r: 72, rx: 8, ry: 16, f: '#ffb627' },
+      { n: 12, r: 52, rx: 9, ry: 18, f: '#2fae72' },
+      { n: 8, r: 32, rx: 9, ry: 16, f: '#ff7a1a' }
+    ];
+    let g = '';
+    rings.forEach(function (o, k) {
+      let p = '';
+      for (let i = 0; i < o.n; i++) {
+        const a = (360 / o.n) * i + (k % 2 ? 180 / o.n : 0);
+        p += '<ellipse cx="0" cy="' + (-o.r) + '" rx="' + o.rx + '" ry="' + o.ry + '" transform="rotate(' + a + ')"/>';
+      }
+      g += '<g fill="' + o.f + '" class="' + (k % 2 ? 'rev' : 'fwd') + '">' + p + '</g>';
+    });
+    let dots = '';
+    for (let i = 0; i < 48; i++) {
+      const a = (Math.PI * 2 * i) / 48;
+      dots += '<circle cx="' + (Math.cos(a) * 108).toFixed(2) + '" cy="' + (Math.sin(a) * 108).toFixed(2) + '" r="2" fill="#fff3d6"/>';
+    }
+    $('#rangoli').innerHTML =
+      '<svg viewBox="-115 -115 230 230">' + dots + g +
+      '<circle r="15" fill="#fff3d6"/><circle r="8" fill="#e0307a"/></svg>';
+  })();
+
+  const tor = $('#toran');
+  let lastN = 0;
+  function buildToran() {
+    const n = Math.max(8, Math.min(44, Math.round(window.innerWidth / 36)));
+    if (n === lastN) return;
+    lastN = n;
+    let h = '<div class="tbar"></div><div class="trow">';
+    for (let i = 0; i < n; i++) {
+      const hh = [10, 24, 10, 36][i % 4];
+      const c = i % 2 ? '#ff7a1a' : '#ffb627';
+      h += '<i class="tu" style="--h:' + hh + 'px;--c:' + c + ';animation-delay:' + (-i * 0.37).toFixed(2) + 's"><u></u><b></b><b></b><s></s></i>';
+    }
+    h += '</div>';
+    tor.innerHTML = h;
+  }
+  buildToran();
+
+  /* ---------- elements + state ---------- */
+  const app = $('#app'), sDoor = $('#s-door'), sPlay = $('#s-play');
+  const doorBtn = $('#door'), doorHint = $('#doorHint');
+  const row = $('#diyas'), cnt = $('#count'), hint = $('#hint'), changeBtn = $('#change');
+  const rk = $('#rk'), rocketEl = $('#rocket'), hand = $('#hand'), rkBtn = $('#rkBtn'), rkTap = $('#rkTap');
+  const tipEl = $('#tip'), exhEl = $('#exh');
+  const fbg = $('#fbg'), fxc = $('#fx'), fin = $('#fin');
+  const finFrom = $('#finFrom');
+  const shareOpen = $('#shareOpen'), replay = $('#replay');
+  const sheetBack = $('#sheetBack'), shForm = $('#shForm'), sender = $('#sender'), serr = $('#serr');
+  const res = $('#res'), linkEl = $('#link'), copyBtn = $('#copy'), wa = $('#wa'), copied = $('#copied');
+
+  let lit = 0, allLit = false, busy = false, anim = null, timers = [];
+
+  function later(fn, ms) { const id = setTimeout(fn, ms); timers.push(id); return id; }
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+  const DOOR_MSG = FROM ? FROM + ' ne aapke liye Diwali ki wish bheji hai. Darwaze par do baar tap karein.' : 'Darwaze par do baar tap karein.';
+  doorHint.textContent = DOOR_MSG;
+
+  /* ---------- diyas ---------- */
+  const DIYA_SVG =
+    '<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">' +
+    '<circle class="glow" cx="60" cy="56" r="60" fill="url(#gGlow)"/>' +
+    '<circle class="ring" cx="60" cy="88" r="40" fill="none" stroke="#ffb627" stroke-width="2"/>' +
+    '<path d="M14 72C14 72 40 78 60 78C80 78 106 72 106 72C104 98 84 110 60 110C36 110 16 98 14 72Z" fill="url(#gClay)"/>' +
+    '<ellipse cx="60" cy="72" rx="46" ry="9" fill="#7a2a10"/>' +
+    '<ellipse class="oil" cx="60" cy="72" rx="38" ry="6" fill="#4a1a08"/>' +
+    '<path d="M26 90q34 12 68 0" fill="none" stroke="#ffd36b" stroke-width="2.4" stroke-dasharray="1 7" stroke-linecap="round"/>' +
+    '<path d="M34 100q26 7 52 0" fill="none" stroke="#ffd36b" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>' +
+    '<rect x="58" y="58" width="4" height="15" rx="2" fill="#3a1a0c"/>' +
+    '<g class="flame">' +
+    '<path d="M60 14C71 32 76 44 60 60C44 44 49 32 60 14Z" fill="url(#gFlame)"/>' +
+    '<path d="M60 36C65 45 67 51 60 58C53 51 55 45 60 36Z" fill="#fff6dc"/>' +
+    '</g></svg>';
+
+  const diyas = [];
+  for (let i = 0; i < TOTAL; i++) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'diya';
+    b.style.setProperty('--i', i);
+    b.innerHTML = DIYA_SVG + '<span class="tap">Tap</span>';
+    b.addEventListener('click', function () { light(b, i); });
+    row.appendChild(b);
+    diyas.push(b);
+  }
+
+  function updateCount() {
+    cnt.textContent = lit + ' / ' + TOTAL + ' diye jale';
+    document.documentElement.style.setProperty('--lit', String(lit / TOTAL));
+  }
+
+  function resetRocket() {
+    if (anim) { try { anim.cancel(); } catch (e) {} anim = null; }
+    rocketEl.style.visibility = '';
+    rocketEl.classList.remove('burning', 'flying', 'shake');
+    hand.classList.remove('on', 'lit');
+    rk.classList.remove('started', 'rk-in');
+    rk.hidden = true;
+    rkBtn.disabled = false;
+    rkTap.hidden = false;
+    busy = false;
+  }
+
+  function resetPlay() {
+    clearTimers();
+    resetRocket();
+    lit = 0; allLit = false;
+    hint.textContent = 'Panch diye jalaiye. Har diye par tap karein.';
+    cnt.hidden = false;
+    changeBtn.hidden = false;
+    diyas.forEach(function (b, i) {
+      b.classList.remove('lit');
+      b.disabled = true;
+      b.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-label', 'Diya ' + (i + 1) + ', tap karke jalayein');
+      b.querySelector('.tap').textContent = 'Tap';
+    });
+    updateCount();
+  }
+
+  function light(b, i) {
+    if (b.disabled || b.classList.contains('lit')) return;
+    b.classList.add('lit');
+    b.setAttribute('aria-pressed', 'true');
+    b.setAttribute('aria-label', 'Diya ' + (i + 1) + ' jal gaya');
+    b.querySelector('.tap').textContent = 'Jal gaya';
+    lit++;
+    updateCount();
+    if (lit === TOTAL && !allLit) {
+      allLit = true;
+      later(showRocket, 1000);
+    }
+  }
+
+  function showRocket() {
+    cnt.hidden = true;
+    changeBtn.hidden = true;
+    hint.textContent = 'Shabash! Ab rocket par tap karke use jalaiye.';
+    rk.hidden = false;
+    rk.classList.remove('rk-in');
+    void rk.offsetWidth;
+    rk.classList.add('rk-in');
+    try { rk.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' }); } catch (e) {}
+    later(function () { rkBtn.focus({ preventScroll: true }); }, 900);
+  }
+
+  function startPlay() {
+    resetPlay();
+    sDoor.hidden = true;
+    sPlay.hidden = false;
+    sPlay.classList.remove('go');
+    void sPlay.offsetWidth;
+    sPlay.classList.add('go');
+    later(function () { diyas.forEach(function (b) { b.disabled = false; }); }, reduce ? 0 : 900);
+    hint.focus({ preventScroll: true });
+  }
+
+  /* ---------- door: double tap ---------- */
+  let lastTap = 0, opened = false;
+  function resetDoor() {
+    opened = false; lastTap = 0;
+    doorBtn.disabled = false;
+    doorBtn.classList.remove('open', 'knock');
+    doorHint.textContent = DOOR_MSG;
+  }
+  doorBtn.addEventListener('click', function () {
+    if (opened) return;
+    const now = Date.now();
+    if (now - lastTap < 650) {
+      opened = true;
+      doorBtn.disabled = true;
+      doorBtn.classList.remove('knock');
+      doorBtn.classList.add('open');
+      doorHint.textContent = 'Darwaza khul gaya!';
+      later(startPlay, reduce ? 300 : 1500);
+    } else {
+      lastTap = now;
+      doorHint.textContent = 'Bas ek baar aur tap karein.';
+      doorBtn.classList.remove('knock');
+      void doorBtn.offsetWidth;
+      doorBtn.classList.add('knock');
+      later(function () { if (!opened && Date.now() - lastTap >= 650) doorHint.textContent = DOOR_MSG; }, 900);
+    }
+  });
+
+  changeBtn.addEventListener('click', function () {
+    resetPlay();
+    sPlay.hidden = true;
+    sDoor.hidden = false;
+    resetDoor();
+    document.documentElement.style.setProperty('--lit', '0');
+    doorBtn.focus({ preventScroll: true });
+  });
+
+  /* ---------- rocket sequence ---------- */
+  rkBtn.addEventListener('click', function () {
+    if (busy) return;
+    busy = true;
+    rkBtn.disabled = true;
+    rkTap.hidden = true;
+    rk.classList.add('started');
+    hint.textContent = 'Thoda door hatiye, rocket chhootne wala hai!';
+    startFx();
+    hand.classList.add('on');
+    later(function () { hand.classList.add('lit'); }, 600);
+    later(function () { rocketEl.classList.add('burning'); fuseOn = true; }, 1050);
+    later(function () { hand.classList.remove('lit'); hand.classList.remove('on'); }, 1700);
+    later(function () { fuseOn = false; rocketEl.classList.remove('burning'); rocketEl.classList.add('shake'); }, 2000);
+    later(function () { rocketEl.classList.remove('shake'); fly(); }, 2600);
+  });
+
+  function fly() {
+    const r = rocketEl.getBoundingClientRect();
+    const cy = r.top + r.height / 2;
+    const dy = Math.max(220, cy - H * 0.24);
+    const dx = rand(-24, 24);
+    flying = true;
+    rocketEl.classList.add('flying');
+    const done = function () {
+      flying = false;
+      const q = rocketEl.getBoundingClientRect();
+      const x = q.left + q.width / 2, y = q.top + q.height / 2;
+      rocketEl.style.visibility = 'hidden';
+      rocketEl.classList.remove('flying');
+      for (let k = 0; k < 3; k++) burst(x + rand(-24, 24), y + rand(-24, 24), pick(), true);
+      startFinale();
+    };
+    if (rocketEl.animate) {
+      anim = rocketEl.animate(
+        [
+          { transform: 'translate(0px,0px) rotate(0deg)' },
+          { transform: 'translate(' + dx.toFixed(1) + 'px,' + (-dy).toFixed(1) + 'px) rotate(' + (dx / 6).toFixed(1) + 'deg)' }
+        ],
+        { duration: reduce ? 900 : 1500, easing: 'cubic-bezier(.5,0,.9,.55)', fill: 'forwards' }
+      );
+      anim.onfinish = done;
+    } else {
+      later(done, 400);
+    }
+  }
+
+  /* ---------- finale ---------- */
+  function letters(el, txt, base) {
+    el.innerHTML = '';
+    Array.from(txt).forEach(function (ch, i) {
+      const s = document.createElement('span');
+      s.className = 'ch';
+      s.textContent = ch;
+      s.style.setProperty('--d', (base + i * 0.09).toFixed(2) + 's');
+      el.appendChild(s);
+    });
+  }
+
+  function startFinale() {
+    letters($('#l1'), 'Happy', 0.35);
+    letters($('#l2'), 'Diwali', 0.9);
+    if (FROM) {
+      finFrom.textContent = FROM + ' ki taraf se shubhkamnayein';
+      finFrom.hidden = false;
+    } else {
+      finFrom.hidden = true;
+    }
+    fbg.hidden = false;
+    fin.hidden = false;
+    app.inert = true;
+    fbg.classList.remove('on');
+    fin.classList.remove('on');
+    void fin.offsetWidth;
+    requestAnimationFrame(function () { fbg.classList.add('on'); fin.classList.add('on'); });
+    autoLaunch = true;
+    spawnT = 500;
+    fxc.classList.add('tappable');
+    later(function () { launch(W * 0.3, H * 0.28); }, 150);
+    later(function () { launch(W * 0.7, H * 0.22); }, 420);
+    later(function () { app.style.visibility = 'hidden'; }, 1000);
+    later(function () { shareOpen.focus({ preventScroll: true }); }, 2700);
+  }
+
+  replay.addEventListener('click', function () {
+    stopFx();
+    fbg.classList.remove('on');
+    fin.classList.remove('on');
+    later(function () {
+      fbg.hidden = true;
+      fin.hidden = true;
+      app.inert = false;
+      app.style.visibility = '';
+      startPlay();
+    }, 650);
+  });
+
+  /* ---------- share sheet ---------- */
+  function openSheet() {
+    sender.value = '';
+    serr.textContent = '';
+    copied.textContent = '';
+    res.hidden = true;
+    sheetBack.hidden = false;
+    fin.inert = true;
+    sender.focus();
+  }
+  function closeSheet() {
+    sheetBack.hidden = true;
+    fin.inert = false;
+    shareOpen.focus({ preventScroll: true });
+  }
+  shareOpen.addEventListener('click', openSheet);
+  $('#shClose').addEventListener('click', closeSheet);
+  sheetBack.addEventListener('click', function (e) { if (e.target === sheetBack) closeSheet(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheetBack.hidden) closeSheet(); });
+
+  shForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const v = clean(sender.value);
+    if (!v) {
+      serr.textContent = 'Pehle apna naam likhiye.';
+      sender.focus();
+      return;
+    }
+    serr.textContent = '';
+    const base = window.location.href.split(/[?#]/)[0];
+    const url = base + '?from=' + encodeURIComponent(v);
+    linkEl.value = url;
+    wa.href = 'https://wa.me/?text=' + encodeURIComponent(v + ' ne aapke liye Diwali ki wish bheji hai. Diye jalakar dekhiye: ' + url);
+    copied.textContent = '';
+    res.hidden = false;
+  });
+  sender.addEventListener('input', function () { serr.textContent = ''; });
+
+  copyBtn.addEventListener('click', function () {
+    const txt = linkEl.value;
+    function fallback() {
+      linkEl.focus();
+      linkEl.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      copied.textContent = ok ? 'Link copy ho gaya.' : 'Link select ho gaya hai. Ab copy kar lijiye.';
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { copied.textContent = 'Link copy ho gaya.'; }, fallback);
+    } else {
+      fallback();
+    }
+  });
+
+  /* ---------- fireworks ---------- */
+  const c = fxc.getContext('2d');
+  const PAL = ['#ffb627', '#ff7a1a', '#ff4d8d', '#ffe08a', '#7cf2c9', '#9ad1ff', '#ffffff', '#e0307a'];
+  const rockets = [], sparks = [];
+  let W = window.innerWidth, H = window.innerHeight;
+  let raf = 0, last = 0, spawnT = 0, running = false, fuseOn = false, flying = false, autoLaunch = false;
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function pick() { return PAL[(Math.random() * PAL.length) | 0]; }
+
+  function size() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    fxc.width = Math.round(W * dpr);
+    fxc.height = Math.round(H * dpr);
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function launch(x, ty) {
+    const g = 0.14;
+    const y0 = H + 10;
+    ty = Math.max(H * 0.1, Math.min(H * 0.75, ty));
+    rockets.push({ x: x, y: y0, vx: rand(-0.4, 0.4), vy: -Math.sqrt(2 * g * Math.max(60, y0 - ty)), g: g, ty: ty, col: pick() });
+  }
+
+  function burst(x, y, col, big) {
+    if (sparks.length > 2600) return;
+    const n = Math.round(rand(70, 120) * (big ? 1.3 : 1));
+    const k = big ? 1.3 : 1;
+    const type = Math.random();
+    const col2 = pick();
+    for (let i = 0; i < n; i++) {
+      const a = (Math.PI * 2 * i) / n + (type < 0.5 ? 0 : rand(-0.2, 0.2));
+      const sp = (type < 0.4 ? rand(2.8, 3.2) : type < 0.75 ? rand(0.8, 4.2) : rand(1.5, 4.5) * (i % 2 ? 1 : 0.6)) * k;
+      sparks.push({
+        x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+        life: 0, max: rand(55, 95),
+        col: (i % 3 === 0 && type > 0.75) ? col2 : col,
+        sz: rand(1.2, 2.6)
+      });
+    }
+  }
+
+  function centerOf(el) {
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min((t - last) / 16.667, 3);
+    last = t;
+
+    c.globalCompositeOperation = 'destination-out';
+    c.fillStyle = 'rgba(0,0,0,' + Math.min(0.6, 0.22 * dt) + ')';
+    c.fillRect(0, 0, W, H);
+    c.globalCompositeOperation = 'lighter';
+
+    if (autoLaunch) {
+      spawnT -= dt * 16.667;
+      if (spawnT <= 0) {
+        launch(rand(W * 0.12, W * 0.88), rand(H * 0.12, H * 0.5));
+        if (Math.random() < 0.35) launch(rand(W * 0.12, W * 0.88), rand(H * 0.15, H * 0.5));
+        spawnT = rand(350, 750) * (reduce ? 2 : 1);
+      }
+    }
+
+    if (fuseOn || flying) {
+      const p = centerOf(flying ? exhEl : tipEl);
+      const k = Math.max(1, Math.round(dt * (flying ? 4 : 3)));
+      for (let j = 0; j < k; j++) {
+        if (flying) {
+          sparks.push({ x: p.x + rand(-3, 3), y: p.y + 10, vx: rand(-0.7, 0.7), vy: rand(1.5, 3.5), life: 0, max: rand(25, 45), col: Math.random() < 0.5 ? '#ff7a1a' : '#ffd36b', sz: rand(1.6, 3) });
+        } else {
+          sparks.push({ x: p.x, y: p.y, vx: rand(-1.6, 1.6), vy: rand(-2.4, 0.4), life: 0, max: rand(16, 30), col: Math.random() < 0.6 ? '#ffd36b' : '#fff3d6', sz: rand(1, 2) });
+        }
+      }
+    }
+
+    for (let i = rockets.length - 1; i >= 0; i--) {
+      const r = rockets[i];
+      r.vy += r.g * dt; r.x += r.vx * dt; r.y += r.vy * dt;
+      c.globalAlpha = 1;
+      c.fillStyle = r.col;
+      c.beginPath(); c.arc(r.x, r.y, 2, 0, 6.283); c.fill();
+      sparks.push({ x: r.x, y: r.y, vx: rand(-0.3, 0.3), vy: rand(0.3, 1), life: 0, max: rand(14, 24), col: '#ffd9a0', sz: 1.2 });
+      if (r.vy >= -0.6 || r.y <= r.ty) {
+        burst(r.x, r.y, r.col, false);
+        rockets.splice(i, 1);
+      }
+    }
+
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i];
+      const f = Math.pow(0.985, dt);
+      s.vx *= f; s.vy = s.vy * f + 0.045 * dt;
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      s.life += dt;
+      const a = 1 - s.life / s.max;
+      if (a <= 0) { sparks.splice(i, 1); continue; }
+      c.globalAlpha = a;
+      c.fillStyle = s.col;
+      c.beginPath(); c.arc(s.x, s.y, s.sz * (0.5 + 0.5 * a), 0, 6.283); c.fill();
+    }
+    c.globalAlpha = 1;
+    raf = requestAnimationFrame(frame);
+  }
+
+  function startFx() {
+    if (running) return;
+    size();
+    rockets.length = 0; sparks.length = 0;
+    c.clearRect(0, 0, W, H);
+    running = true;
+    fuseOn = false; flying = false; autoLaunch = false;
+    last = performance.now();
+    raf = requestAnimationFrame(frame);
+  }
+  function stopFx() {
+    running = false;
+    cancelAnimationFrame(raf);
+    fuseOn = false; flying = false; autoLaunch = false;
+    c.clearRect(0, 0, W, H);
+    fxc.classList.remove('tappable');
+  }
+
+  fxc.addEventListener('pointerdown', function (e) {
+    if (!running || !autoLaunch) return;
+    const r = fxc.getBoundingClientRect();
+    launch(e.clientX - r.left, e.clientY - r.top);
+  });
+
+  let rz = 0;
+  window.addEventListener('resize', function () {
+    clearTimeout(rz);
+    rz = setTimeout(function () { buildToran(); if (running) size(); }, 150);
+  });
+
+  resetPlay();
+  resetDoor();
+})();
+</script>
+</body>
+</html>
